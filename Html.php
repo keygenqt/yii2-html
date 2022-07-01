@@ -25,7 +25,8 @@ class Html extends \yii\helpers\Html
             $count = count(
                 explode('/', str_replace($web, '', Yii::$app->request->getUrl()))
             );
-            $path = str_repeat("../", $count - 2);
+            $repeat = $count == 1 ? 0 : $count - 2;
+            $path = str_repeat("../", $repeat);
             $result = Url::to($path . $src);
         } else {
             $result = $src;
